@@ -1,30 +1,30 @@
 import java.util.*;
 
 public class Task {
-    private String text;
+    private String name;
     private String description;
     private int id;
     private TaskStatus status;
 
-    public Task(int id, String text, String description, TaskStatus status) {
+    public Task(int id, String name, String description, TaskStatus status) {
         this.id = id;
-        this.text = text;
+        this.name = name;
         this.description = description;
         this.status = status;
     }
 
-    public Task(String text, String description) {
-        this.text = text;
+    public Task(String name , String description) {
+        this.name = name;
         this.description = description;
         this.status = TaskStatus.NEW;
     }
 
-    void setName(String text) {
-        this.text = text;
+    void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
-        return text;
+        return name;
     }
 
      void setDescription(String description) {
@@ -52,31 +52,23 @@ public class Task {
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        Task task = (Task) object;
-        return id == task.id && Objects.equals(text, task.text) && Objects.equals(description, task.description)
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return id == task.id && Objects.equals(name, task.name) && Objects.equals(description, task.description)
                 && status == task.status;
     }
 
     @Override
     public int hashCode() {
-        int hash = 17;
-        if (text != null) {
-            hash = hash + text.hashCode();
-        }
-        hash = hash * 31;
-        if (description != null) {
-            hash = hash + description.hashCode();
-        }
-        return hash;
+        return Objects.hash(name, description, id, status);
     }
 
     @Override
     public String toString() {
         return "Task{" +
-                "name='" + text + '\'' +
+                "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", id=" + id +
                 ", status=" + status +

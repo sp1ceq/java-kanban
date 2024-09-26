@@ -55,8 +55,8 @@ public class TaskManager {
     }
 
     public Task updateTask(Task task) {
-        Integer taskID = task.getId();
-        if (taskID == null || !tasks.containsKey(taskID)) {
+        int taskID = task.getId();
+        if ( !tasks.containsKey(taskID)) {
             return null;
         }
         tasks.replace(taskID, task);
@@ -64,8 +64,8 @@ public class TaskManager {
     }
 
     public Epic updateEpic(Epic epic) {
-        Integer epicID = epic.getId();
-        if (epicID == null || !epics.containsKey(epicID)) {
+        int epicID = epic.getId();
+        if ( !epics.containsKey(epicID)) {
             return null;
         }
         Epic oldEpic = epics.get(epicID);
@@ -87,8 +87,8 @@ public class TaskManager {
     }
 
     public SubTask updateSubtask(SubTask subtask) {
-        Integer subtaskID = subtask.getId();
-        if (subtaskID == null || !subtasks.containsKey(subtaskID)) {
+        int subtaskID = subtask.getId();
+        if (subtaskID == 0 || !subtasks.containsKey(subtaskID)) {
             return null;
         }
         int epicID = subtask.getEpicID();
