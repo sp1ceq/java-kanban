@@ -1,3 +1,5 @@
+package Managers;
+
 import java.util.*;
 
 public class InMemoryHistoryManager implements HistoryManager {
@@ -9,6 +11,9 @@ public class InMemoryHistoryManager implements HistoryManager {
     public void add(Task task) {
         if (historyList.size() == MAX_HISTORY_STORAGE) {
             historyList.removeFirst();
+        }
+        if (task == null) {
+            return;
         }
         historyList.add(task);
     }

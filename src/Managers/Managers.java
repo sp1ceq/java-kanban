@@ -1,5 +1,9 @@
+package Managers;
+
+import Tasks.TaskManager;
+
 public class Managers {
-    public static InMemoryTaskManager getDefault() {
+    public static TaskManager getDefault()  {
         return new InMemoryTaskManager();
     }
 

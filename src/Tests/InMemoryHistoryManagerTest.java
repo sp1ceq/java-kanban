@@ -1,3 +1,6 @@
+package Tests;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import enums.Status;
@@ -75,9 +78,9 @@ class InMemoryHistoryManagerTest {
                 "новое описание", Status.IN_PROGRESS, flatRenovation.getId()));
         List<Task> subtasks = taskManager.getHistory();
         SubTask oldSubtask = (Subtask) subtasks.getFirst();
-        assertEquals(flatRenovationSubtask3.getName(), oldSubtask.getName(),
+        Assertions.assertEquals(flatRenovationSubtask3.getName(), oldSubtask.getName(),
                 "В истории не сохранилась старая версия эпика");
-        assertEquals(flatRenovationSubtask3.getDescription(), oldSubtask.getDescription(),
+        Assertions.assertEquals(flatRenovationSubtask3.getDescription(), oldSubtask.getDescription(),
                 "В истории не сохранилась старая версия эпика");
     }
 }

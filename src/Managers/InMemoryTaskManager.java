@@ -1,11 +1,13 @@
+package Managers;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class InMemoryTaskManager {
-    HashMap<Integer, Task> tasks = new HashMap<>();
-    HashMap<Integer, Epic> epics = new HashMap<>();
-    HashMap<Integer, SubTask> subtasks = new HashMap<>();
-
+public class InMemoryTaskManager implements TaskManager {
+    private HashMap<Integer, Task> tasks = new HashMap<>();
+    private HashMap<Integer, Epic> epics = new HashMap<>();
+    private HashMap<Integer, SubTask> subtasks = new HashMap<>();
+    private final HistoryManager historyManager = Managers.getDefaultHistory();
     private int id = 1;
 
     int getNextID() {
@@ -106,10 +108,12 @@ public class InMemoryTaskManager {
 
     public Task getTaskByID(int id) {
         return tasks.get(id);
+        historyManager.addTask(task);
     }
 
     public Epic getEpicByID(int id) {
         return epics.get(id);
+        historyManager.addTask(task);
     }
 
     public SubTask getSubtaskByID(int id) {

@@ -1,3 +1,5 @@
+package Tests;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import enums.Status;
@@ -20,7 +22,7 @@ class InMemoryTaskManagerTest {
 
     @Test
     void addNewTask() {
-        //проверяем, что InMemoryTaskManager добавляет задачи и может найти их по id;
+        //проверяем, что Managers.InMemoryTaskManager добавляет задачи и может найти их по id;
         final Task task = taskManager.addTask(new Task("Test addNewTask", "Test addNewTask description"));
         final Task savedTask = taskManager.getTaskByID(task.getId());
         assertNotNull(savedTask, "Задача не найдена.");
@@ -34,7 +36,7 @@ class InMemoryTaskManagerTest {
 
     @Test
     void addNewEpicAndSubtasks() {
-        //проверяем, что InMemoryTaskManager добавляет эпики и подзадачи и может найти их по id;
+        //проверяем, что Managers.InMemoryTaskManager добавляет эпики и подзадачи и может найти их по id;
         final Epic flatRenovation = taskManager.addEpic(new Epic("Сделать ремонт",
                 "Нужно успеть за отпуск"));
         final SubTask flatRenovationSubtask1 = taskManager.addSubtask(new SubTask("Поклеить обои",

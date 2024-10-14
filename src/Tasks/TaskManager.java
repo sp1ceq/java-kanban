@@ -1,8 +1,9 @@
+package Tasks;
+
 import java.util.List;
 
 
 public interface TaskManager {
-    int getNextID();
 
     Task addTask(Task task);
 
