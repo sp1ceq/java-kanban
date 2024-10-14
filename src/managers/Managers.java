@@ -1,6 +1,4 @@
-package Managers;
-
-import Tasks.TaskManager;
+package managers;
 
 public class Managers {
     public static TaskManager getDefault()  {

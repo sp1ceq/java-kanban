@@ -1,4 +1,4 @@
-package Tests;
+package tests;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,11 +8,11 @@ class ManagersTest {
 
     @Test
     void getDefaultShouldInitializeInMemoryTaskManager() {
-        assertInstanceOf(InMemoryTaskManager.class, Managers.getDefault());
+        assertInstanceOf(InMemoryTaskManager.class, managers.getDefault());
     }
 
     @Test
     void getDefaultHistoryShouldInitializeInMemoryHistoryManager() {
-        assertInstanceOf(InMemoryHistoryManager.class, Managers.getDefaultHistory());
+        assertInstanceOf(InMemoryHistoryManager.class, managers.getDefaultHistory());
     }
 }

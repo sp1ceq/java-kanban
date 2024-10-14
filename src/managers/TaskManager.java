@@ -1,4 +1,8 @@
-package Tasks;
+package managers;
+
+import tasks.Epic;
+import tasks.SubTask;
+import tasks.Task;
 
 import java.util.List;
 
@@ -43,5 +47,5 @@ public interface TaskManager {
 
     SubTask deleteSubtaskByID(int id);
 
-    List<Task> getHistory();
+    HistoryManager getHistory();
 }

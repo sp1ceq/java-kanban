@@ -1,4 +1,4 @@
-package Tests;
+package tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +18,7 @@ class InMemoryHistoryManagerTest {
 
     @BeforeEach
     public void beforeEach() {
-        taskManager = Managers.getDefault();
+        taskManager = managers.getDefault();
     }
 
     @Test
