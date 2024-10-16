@@ -1,5 +1,8 @@
 package managers;
 
+import tasks.Epic;
+import tasks.SubTask;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -106,18 +109,21 @@ public class InMemoryTaskManager implements TaskManager {
         return subtask;
     }
 @Override
-    public Task getTaskByID(int id) {
-        historyManager.addTask(task);
-        return tasks.get(id);
-    }
-@Override
+public Task getTaskByID(int id) {
+    Task task = tasks.get(id);
+    historyManager.addTask(task);
+    return task;
+}
+    @Override
     public Epic getEpicByID(int id) {
-        historyManager.addTask(task);
+        Epic epic = epics.get(id);
+        historyManager.addEpic(epic);
         return epics.get(id);
     }
 @Override
     public SubTask getSubtaskByID(int id) {
-        historyManager.addTask(task);
+    SubTask subTask = subtasks.get(id);
+        historyManager.addSubTask(subTask);
         return subtasks.get(id);
     }
 @Override
