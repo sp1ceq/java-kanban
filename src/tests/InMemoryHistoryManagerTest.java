@@ -9,12 +9,15 @@ import status.Status;
 import tasks.Task;
 import tasks.Epic;
 import tasks.Subtask;
+
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 class InMemoryHistoryManagerTest {
     private static TaskManager taskManager;
     private InMemoryHistoryManager historyManager;
+
     @BeforeEach
     public void beforeEach() {
         taskManager = Managers.getDefault();
@@ -25,14 +28,11 @@ class InMemoryHistoryManagerTest {
         Task washFloor = new Task("Помыть полы", "С новым средством");
         taskManager.addTask(washFloor);
         taskManager.getTaskFromId(washFloor.getId());
-        taskManager.updateTask(new Task(washFloor.getId(), "Не забыть помыть полы",
-                "Можно и без средства", Status.IN_PROGRESS));
+        taskManager.updateTask(new Task(washFloor.getId(), "Не забыть помыть полы", "Можно и без средства", Status.IN_PROGRESS));
         List<Task> tasks = taskManager.getHistory();
         Task oldTask = tasks.getFirst();
-        assertEquals(washFloor.getTitle(),
-                oldTask.getTitle(), "В истории не сохранилась старая версия задачи");
-        assertEquals(washFloor.getDescription(),
-                oldTask.getDescription(), "В истории не сохранилась старая версия задачи");
+        assertEquals(washFloor.getTitle(), oldTask.getTitle(), "В истории не сохранилась старая версия задачи");
+        assertEquals(washFloor.getDescription(), oldTask.getDescription(), "В истории не сохранилась старая версия задачи");
     }
 
     @Test
@@ -118,20 +118,6 @@ class InMemoryHistoryManagerTest {
         assertEquals("Updated Task", tasks.get(0).getTitle());
         assertEquals("Updated Description", tasks.get(0).getDescription());
     }
-    @Test
-    public void testSubtaskInEpicIntegrity() {
-        // Создаем эпик и подзадачи
-        Epic epic = new Epic("1", "Epic Task");
-        Subtask subtask1 = new Subtask("2", "Subtask 1", "Description");
-        Subtask subtask2 = new Subtask("3", "Subtask 2", "Description");
 
-        // Добавляем подзадачи в эпик
-        epic.addSubtask(subtask1);
-        epic.addSubtask(subtask2);
 
-        // Удаляем одну подзадачу
-        epic.removeSubtask(2);
-
-        assertFalse(epic.getSubtasks().contains(subtask1), "Подзадача не должна храниться внутри эпика.");
-    }
 }

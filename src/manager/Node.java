@@ -2,7 +2,7 @@ package manager;
 
 import tasks.Task;
 
- class Node<T> { // отдельный класс Node для узла списка
+class Node<T> { // отдельный класс Node для узла списка
 
     public Task data;
     public Node<Task> next;
@@ -14,31 +14,31 @@ import tasks.Task;
         this.prev = prev;
     }
 
-     public Task getData() {
-         return data;
-     }
+    public Task getData() {
+        return data;
+    }
 
-     public void setData(Task data) {
-         this.data = data;
-     }
+    public void setData(Task data) {
+        this.data = data;
+    }
 
-     public Node<Task> getNext() {
-         return next;
-     }
+    public Node<Task> getNext() {
+        return next;
+    }
 
-     public void setNext(Node<Task> next) {
-         this.next = next;
-     }
+    public void setNext(Node<Task> next) {
+        this.next = next;
+    }
 
-     public Node<Task> getPrev() {
-         return prev;
-     }
+    public Node<Task> getPrev() {
+        return prev;
+    }
 
-     public void setPrev(Node<Task> prev) {
-         this.prev = prev;
-     }
- }
- // 1. Объявление класса и параметра типа:
+    public void setPrev(Node<Task> prev) {
+        this.prev = prev;
+    }
+}
+// 1. Объявление класса и параметра типа:
 //- class Node<T>: Класс определен как дженерик (универсальный) с параметром типа T.
 // Это позволяет создавать узлы, которые могут хранить данные любого типа (хотя в вашей реализации вы используете его только для Task).
 //

@@ -1,15 +1,13 @@
 package manager;
 
 import tasks.Task;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-
 public class InMemoryHistoryManager implements HistoryManager {
-
-
 
 
     // Создает хеш-таблицу (словарь),
@@ -24,7 +22,6 @@ public class InMemoryHistoryManager implements HistoryManager {
     private Node<Task> tail;
 
 
-
     // Переопределяет метод add из интерфейса HistoryManager.
     // Этот метод будет добавлять новую задачу в историю.
     @Override
@@ -36,20 +33,20 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
 
-//Переопределяет метод remove из интерфейса HistoryManager, который удаляет задачу по её идентификатору.
+    //Переопределяет метод remove из интерфейса HistoryManager, который удаляет задачу по её идентификатору.
     @Override
     public void remove(int id) {
         removeNode(receivedTasks.get(id)); //- Получает узел задачи из хеш-таблицы по её ID и вызывает метод removeNode, чтобы удалить этот узел из списка.
     }
 
-//  Переопределяет метод getHistory из интерфейса HistoryManager, который возвращает список задач в истории просмотров.
+    //  Переопределяет метод getHistory из интерфейса HistoryManager, который возвращает список задач в истории просмотров.
     @Override
     public List<Task> getHistory() {
         return getTasks(); // - Вызывает метод getTasks, чтобы получить список задач из двусвязного списка, и возвращает его.
     }
 
 
-//- Объявляет метод linkLast, который добавляет новый узел с задачей в конец двусвязного списка.
+    //- Объявляет метод linkLast, который добавляет новый узел с задачей в конец двусвязного списка.
     private void linkLast(Task element) {
         final Node<Task> oldTail = tail; // - Сохраняет ссылку на текущий хвост списка в переменной oldTail.
 
