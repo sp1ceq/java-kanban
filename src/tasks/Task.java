@@ -1,76 +1,87 @@
 package tasks;
 
+import status.Status;
+
 import java.util.*;
 
 public class Task {
-    private String name;
-    private String description;
+
     private int id;
+    private String title;
+    private String description;
     private Status status;
 
-    public Task(int id, String name, String description, Status status) {
+    public Task(int id, String title, String description, Status status) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
         this.status = status;
     }
 
-    public Task(String name , String description) {
-        this.name = name;
+    public Task(String title, String description) {
+        this.title = title;
         this.description = description;
         this.status = Status.NEW;
     }
 
-    void setName(String name) {
-        this.name = name;
+    public String getTitle() {
+        return title;
     }
 
-    public String getName() {
-        return name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-     void setDescription(String description) {
-        this.description = description;
-    }
-
-     String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-     void setId(int id) {
-        this.id = id;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-     int getId() {
+    public int getId() {
         return id;
     }
 
-     void setStatus(Status status) {
-        this.status = status;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Status getStatus() {
         return status;
     }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Task task = (Task) o;
-        return id == task.id && Objects.equals(name, task.name) && Objects.equals(description, task.description)
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Task task = (Task) object;
+        return id == task.id && Objects.equals(title, task.title) && Objects.equals(description, task.description)
                 && status == task.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, id, status);
+        int hash = 17;
+        if (title != null) {
+            hash = hash + title.hashCode();
+        }
+        hash = hash * 31;
+        if (description != null) {
+            hash = hash + description.hashCode();
+        }
+        return hash;
     }
 
     @Override
     public String toString() {
         return "Tasks.Task{" +
-                "name='" + name + '\'' +
+                "name='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", id=" + id +
                 ", status=" + status +

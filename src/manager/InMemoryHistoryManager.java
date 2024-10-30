@@ -1,10 +1,12 @@
-package managers;
+package manager;
+
+import tasks.Task;
 
 import java.util.*;
 
 public class InMemoryHistoryManager implements HistoryManager {
 
-    private static final int MAX_HISTORY_STORAGE = 10;
+    private final static int MAX_HISTORY_STORAGE = 10;
     private final List<Task> historyList = new ArrayList<>();
 
     @Override
@@ -12,14 +14,11 @@ public class InMemoryHistoryManager implements HistoryManager {
         if (historyList.size() == MAX_HISTORY_STORAGE) {
             historyList.removeFirst();
         }
-        if (task == null) {
-            return;
-        }
         historyList.add(task);
     }
 
     @Override
     public List<Task> getHistory() {
-        return new ArrayList<>(historyList);
+        return historyList;
     }
 }
