@@ -11,13 +11,11 @@ public class Task {
     private String description;
     private Status status;
 
-    public Task(int id,String title,String description){
+    public Task(int id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
     }
-
-
 
 
     public Task(int id, String title, String description, Status status) {
@@ -31,6 +29,10 @@ public class Task {
         this.title = title;
         this.description = description;
         this.status = Status.NEW;
+    }
+
+    public Task() {
+
     }
 
     public String getTitle() {
